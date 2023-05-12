@@ -11,7 +11,7 @@ import jakarta.transaction.Transactional;
 
 public interface DossierRepository extends JpaRepository<Dossier,Long> {
      @Transactional
-     Optional<Dossier> findByMembreIdAndNomDossier(Long membreId,String nomDossier);
+     Optional<Dossier> findByMembreIdAndNomDossierAndProjetId(Long membreId,String nomDossier,Long projetId);
      @Transactional
      Optional<List<Dossier>> findByProjetId(Long projetId);
 }

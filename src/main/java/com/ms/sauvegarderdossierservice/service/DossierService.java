@@ -17,7 +17,7 @@ public class DossierService {
 
     public Dossier sauvegarderDossier(Dossier dos){
 
-        if(this.dossierRepository.findByMembreIdAndNomDossier(dos.getMembreId(),dos.getNomDossier()).isPresent())
+        if(this.dossierRepository.findByMembreIdAndNomDossierAndProjetId(dos.getMembreId(),dos.getNomDossier(),dos.getProjetId()).isPresent() )
             return null;
         else
             return this.dossierRepository.save(dos);
