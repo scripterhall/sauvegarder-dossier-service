@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,7 +55,16 @@ public class DossierController {
 
     }
 
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> supprimerDossier(@PathVariable("id") Long id){
+        if(id == null)
+            return ResponseEntity.badRequest().build();
+        boolean done = this.dossierService.supprimerDossier(id);
+        if(done == true)
+            return ResponseEntity.ok().build();
+        else
+            return ResponseEntity.notFound().build();
+    }
 
     @GetMapping("/projet/{id}")
     public ResponseEntity<List<Dossier>> getDossierByProjetId(@PathVariable("id") Long id){

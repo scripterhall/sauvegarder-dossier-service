@@ -1,5 +1,6 @@
 package com.ms.sauvegarderdossierservice.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.ms.sauvegarderdossierservice.model.Membre;
 
 import jakarta.persistence.Column;
@@ -18,6 +19,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @Entity
+@JsonSerialize
 public class Dossier {
 
     @Id

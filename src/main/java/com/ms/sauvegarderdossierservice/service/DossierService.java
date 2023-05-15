@@ -16,7 +16,6 @@ public class DossierService {
     private DossierRepository dossierRepository;
 
     public Dossier sauvegarderDossier(Dossier dos){
-
         if(this.dossierRepository.findByMembreIdAndNomDossierAndProjetId(dos.getMembreId(),dos.getNomDossier(),dos.getProjetId()).isPresent() )
             return null;
         else
@@ -32,4 +31,11 @@ public class DossierService {
 
     }
 
+    public boolean supprimerDossier(Long id){
+        if(this.dossierRepository.existsById(id)){
+            this.dossierRepository.deleteById(id);
+            return true;
+        }
+        return false;   
+    }
 }
